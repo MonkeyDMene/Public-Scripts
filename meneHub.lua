@@ -1,1 +1,0 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/MonkeyDMene/meneHub/main/Jojo_GR'))()
