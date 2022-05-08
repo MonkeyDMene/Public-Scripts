@@ -1,19 +1,18 @@
-local Key = "E"
-local Toggle = true
-local Vim = game:service'VirtualInputManager'
-     
-game:GetService("UserInputService").InputBegan:Connect(function(wiz, ard)
-    if wiz.KeyCode == Enum.KeyCode[Key] and not ard then 
-    Toggle = not Toggle
-    end
-end)
+task.spawn(function()
+    while task.wait() do
+        pcall(function()
+                  if game:GetService("Workspace").Living[game.Players.LocalPlayer.Name].Humanoid.Info.Stamina.Value == 100 then
+                  local args = {
+    [1] = "J",
+    [2] = function()end
+}
 
-
-game:GetService('RunService').Stepped:connect(function()
-    if Toggle then
-    local v = game:GetService("Players").LocalPlayer.PlayerGui.PushupsGui.Pushups.Button.Text
-     Vim:SendKeyEvent(true, v, false, game)
-     wait(0.3)
-     Vim:SendKeyEvent(false, v, false, game)
+game:GetService("Players").LocalPlayer.Character.Character.input:FireServer(unpack(args))
+                  else 
+                  if game:GetService("Workspace").Living[game.Players.LocalPlayer.Name].Humanoid.Info.Stamina.Value == 0 then
+                  game.Players.LocalPlayer.Character:Destroy()
+               end
+            end
+        end)
     end
 end)
